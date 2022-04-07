@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+.grid-container {
+    border: solid red 1px;
+}
+
+.square {
+    height: 20px;
+    width: 20px;
+    border: solid black 2px;
+}
