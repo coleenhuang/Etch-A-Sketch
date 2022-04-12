@@ -1,4 +1,5 @@
 const grid = document.querySelector('.grid-container');
+const slider = document.querySelector('#squarenum');
 
 function insertSquares () {
     //Inserts squares for 16x16 grid
@@ -8,7 +9,7 @@ function insertSquares () {
         grid.append(div)
     }
     onHover()
-    resetGrid()
+    clearGrid()
 }
 
 function onHover () {
@@ -22,9 +23,9 @@ function onHover () {
     })
 }
 
-function resetGrid () {
+function clearGrid () {
     //Resets the squares in the grid to blank
-    document.querySelector('.reset').addEventListener('click', () => {
+    document.querySelector('.clear').addEventListener('click', () => {
         let squares = document.querySelectorAll('.square');
         let squaresNum = squares.length;
         for (let i = 0; i < squaresNum; i++) {
@@ -34,5 +35,12 @@ function resetGrid () {
     
 }
 
+function getSquareNum() {
+    slider.addEventListener('change', (event) => {
+        console.log(event.target.valueAsNumber)
+    })
+}
+
 insertSquares();
+getSquareNum();
 
