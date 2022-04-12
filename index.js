@@ -1,15 +1,31 @@
 const grid = document.querySelector('.grid-container');
 const slider = document.querySelector('#slider');
 
-function insertSquares () {
-    //Inserts squares for 16x16 grid
-    for (let i = 0; i<256; i++) {
-        let div = document.createElement('div')
-        div.classList.add('square')
-        grid.append(div)
+function startGame () {
+    getSquareNum();
+    generateGrid();
+    resetGrid();
+    
+}
+function generateGrid () {
+    //Creates the correct number of squares for the grid
+    while (grid.hasChildNodes()) {
+        grid.removeChild(grid.lastChild)
+      }
+    let gridNumber = slider.valueAsNumber;
+    let totalSquares = Math.pow(gridNumber, 2)
+    for (let i = 0; i< totalSquares; i++) {
+        let gridItem = document.createElement('div')
+        gridItem.classList.add('square')
+        grid.style.gridTemplateColumns = `repeat(${gridNumber}, 1fr)`;
+        grid.style.gridTemplateRows = `repeat(${gridNumber}, 1fr)`;
+        grid.insertAdjacentElement('beforeend', gridItem);
     }
     onHover()
-    clearGrid()
+}
+
+function resizeSquares(side) {
+    grid.style.gridTemplate = `repeat(${side}, 1fr)/ repeat(${side}, 1fr)`
 }
 
 function onHover () {
@@ -23,7 +39,7 @@ function onHover () {
     })
 }
 
-function clearGrid () {
+function resetGrid () {
     //Resets the squares in the grid to blank
     document.querySelector('.clear').addEventListener('click', () => {
         let squares = document.querySelectorAll('.square');
@@ -31,16 +47,18 @@ function clearGrid () {
         for (let i = 0; i < squaresNum; i++) {
             squares[i].style.backgroundColor = "white";
         }
-    })
-    
+    }) 
 }
+
 
 function getSquareNum() {
     slider.addEventListener('change', (event) => {
         console.log(event.target.valueAsNumber)
+        generateGrid();
     })
 }
 
-insertSquares();
-getSquareNum();
+startGame()
+
+
 

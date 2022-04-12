@@ -7,13 +7,13 @@
     width: 360px;
     height: 360px;
     display: grid;
-    grid-template: repeat(16, 1fr)/ repeat(16, 1fr);
     margin: 0;
     padding: 0;
 
 }
 
 .square {
+    border: 0.5px solid black;
     margin: 0;
     padding: 0;
 }
