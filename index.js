@@ -1,5 +1,5 @@
 const grid = document.querySelector('.grid-container');
-const slider = document.querySelector('#squarenum');
+const slider = document.querySelector('#slider');
 
 function insertSquares () {
     //Inserts squares for 16x16 grid
